@@ -78,7 +78,7 @@
 
     <!--=== activity Splash ==================================================================== -->
     <string name="splash_welcome_text">WELCOME</string>
-    <string name="splash_desc_text">Browse all the interesting place using The City app</string>
+    <string name="splash_desc_text">Browse all the restaurants in your City</string>
 
     <!--=== fragment Category ================================================================== -->
     <string name="refresh_failed">Refresh failed</string>

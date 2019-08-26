@@ -10,6 +10,7 @@ import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -23,10 +24,7 @@ import com.facundoaramayo.testrappikotlin.R;
 import com.facundoaramayo.testrappikotlin.data.AppConfig;
 import com.facundoaramayo.testrappikotlin.data.SharedPref;
 import com.facundoaramayo.testrappikotlin.data.ThisApplication;
-import com.facundoaramayo.testrappikotlin.model.Place;
-import com.facundoaramayo.testrappikotlin.model.ResLocation;
-import com.facundoaramayo.testrappikotlin.model.RestaurantContainer;
-import com.facundoaramayo.testrappikotlin.model.RestaurantItem;
+import com.facundoaramayo.testrappikotlin.model.*;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -330,7 +328,6 @@ public class Tools {
 
     public static List<Place> convertRestaurantContainerToPlace(List<RestaurantContainer> listContainer){
         List<Place> places = new ArrayList<>();
-        //TODO: Make the conversion
         int listSize = listContainer.size();
         Log.d("LOG-CONVERSION", "Container size: " + listSize);
         Log.d("LOG-CONVERSION", "data: " + listContainer.get(0).getRestaurant().getName());
@@ -340,8 +337,6 @@ public class Tools {
 
             Log.d("LOG-CONVERSION " + i, "RestaurantItem id: " + resItem.getId());
             Log.d("LOG-CONVERSION " + i, "RestaurantItem name: " + resItem.getName());
-            Log.d("LOG-CONVERSION " + i, "RestaurantItem cuisines: " + resItem.getCuisines());
-            Log.d("LOG-CONVERSION " + i, "RestaurantItem location: " + resLocation.getCity());
 
             Place localPlace = new Place();
             localPlace.setPlace_id(resItem.getId());
