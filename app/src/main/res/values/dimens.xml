@@ -3,15 +3,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-    <!--genaral spacing-->
-=======
     <!--general spacing-->
->>>>>>> Stashed changes
-=======
-    <!--general spacing-->
->>>>>>> Stashed changes
     <dimen name="spacing_xsmall">2dp</dimen>
     <dimen name="spacing_small">3dp</dimen>
     <dimen name="spacing_medium">5dp</dimen>
@@ -30,20 +22,11 @@
     <dimen name="status_bar_height">25dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
     <!--for item recycle-->
     <dimen name="item_place_height">195dp</dimen>
     <dimen name="item_place_width">180dp</dimen>
     <dimen name="item_place_tag_height">45dp</dimen>
 
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
     <!--for drawer menu-->
     <dimen name="drawer_menu_width">250dp</dimen>
 
@@ -51,12 +34,6 @@
     <dimen name="text_desc_width">270dp</dimen>
     <dimen name="text_title_width">310dp</dimen>
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-</resources>
-=======
-=======
->>>>>>> Stashed changes
     <!--for detail activity-->
     <dimen name="image_toolbar_height">270dp</dimen>
     <dimen name="collapse_toolbar_height">110dp</dimen>
@@ -73,7 +50,3 @@
     <dimen name="nav_header_height">176dp</dimen>
 
 </resources>
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes

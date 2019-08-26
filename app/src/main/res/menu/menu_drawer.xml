@@ -1,170 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-=======
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
->>>>>>> Stashed changes
-=======
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
->>>>>>> Stashed changes
 
     <group android:checkableBehavior="single">
 
         <group android:id="@+id/top_sub">
             <item
-                android:id="@+id/nav_home"
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-                android:icon="@drawable/ic_menu_send"
-=======
-                android:icon="@drawable/ic_nav_rental"
->>>>>>> Stashed changes
-=======
-                android:icon="@drawable/ic_nav_rental"
->>>>>>> Stashed changes
-                android:title="@string/title_home" />
+                    android:id="@+id/nav_home"
+                    android:icon="@drawable/ic_nav_rental"
+                    android:title="@string/title_home" />
 
             <item
-                android:id="@+id/nav_all"
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-                android:icon="@drawable/ic_menu_send"
-                android:title="@string/title_nav_all" />
-
-=======
-=======
->>>>>>> Stashed changes
-                android:icon="@drawable/ic_nav_all"
-                android:title="@string/title_nav_all" />
+                    android:id="@+id/nav_all"
+                    android:icon="@drawable/ic_nav_all"
+                    android:title="@string/title_nav_all" />
 
             <item
-                android:id="@+id/nav_map"
-                android:icon="@drawable/ic_nav_map"
-                android:title="@string/title_nav_map" />
+                    android:id="@+id/nav_map"
+                    android:icon="@drawable/ic_nav_map"
+                    android:title="@string/title_nav_map" />
 
             <item
-                android:id="@+id/nav_favorites"
-                android:icon="@drawable/ic_nav_favorites"
-                android:title="@string/title_nav_fav" />
+                    android:id="@+id/nav_favorites"
+                    android:icon="@drawable/ic_nav_favorites"
+                    android:title="@string/title_nav_fav" />
 
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
         </group>
 
         <item
-            android:id="@+id/nav_delivery"
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-            android:icon="@drawable/ic_menu_send"
-            android:title="@string/title_nav_delivery" />
+                android:id="@+id/nav_delivery"
+                android:icon="@drawable/ic_nav_food"
+                android:title="@string/title_nav_delivery" />
         <item
-            android:id="@+id/nav_dine_out"
-            android:icon="@drawable/ic_menu_send"
-            android:title="@string/title_dine_out" />
+                android:id="@+id/nav_dine_out"
+                android:icon="@drawable/ic_nav_food"
+                android:title="@string/title_dine_out" />
         <item
-            android:id="@+id/nav_nightlife"
-            android:icon="@drawable/ic_menu_send"
-            android:title="@string/title_nightlife" />
+                android:id="@+id/nav_nightlife"
+                android:icon="@drawable/ic_nav_food"
+                android:title="@string/title_nightlife" />
         <item
-            android:id="@+id/nav_catching-up"
-            android:icon="@drawable/ic_menu_send"
-            android:title="@string/title_catching_up" />
+                android:id="@+id/nav_catching-up"
+                android:icon="@drawable/ic_nav_food"
+                android:title="@string/title_catching_up" />
         <item
-            android:id="@+id/nav_takeaway"
-            android:icon="@drawable/ic_menu_send"
-            android:title="@string/title_takeaway" />
+                android:id="@+id/nav_takeaway"
+                android:icon="@drawable/ic_nav_food"
+                android:title="@string/title_takeaway" />
         <item
-            android:id="@+id/nav_cafes"
-            android:icon="@drawable/ic_menu_send"
-            android:title="@string/title_cafes" />
+                android:id="@+id/nav_cafes"
+                android:icon="@drawable/ic_nav_food"
+                android:title="@string/title_cafes" />
         <item
-            android:id="@+id/nav_daily_menus"
-            android:icon="@drawable/ic_menu_send"
-            android:title="@string/title_daily_menus" />
+                android:id="@+id/nav_daily_menus"
+                android:icon="@drawable/ic_nav_food"
+                android:title="@string/title_daily_menus" />
         <item
-            android:id="@+id/nav_lunch"
-            android:icon="@drawable/ic_menu_send"
-            android:title="@string/title_lunch" />
+                android:id="@+id/nav_lunch"
+                android:icon="@drawable/ic_nav_food"
+                android:title="@string/title_lunch" />
         <item
-            android:id="@+id/nav_breakfast"
-            android:icon="@drawable/ic_menu_send"
-            android:title="@string/title_breakfast" />
+                android:id="@+id/nav_breakfast"
+                android:icon="@drawable/ic_nav_food"
+                android:title="@string/title_breakfast" />
         <item
-            android:id="@+id/nav_dinner"
-            android:icon="@drawable/ic_menu_send"
-            android:title="@string/title_dinner" />
+                android:id="@+id/nav_dinner"
+                android:icon="@drawable/ic_nav_food"
+                android:title="@string/title_dinner" />
         <item
-            android:id="@+id/nav_pubs_bars"
-            android:icon="@drawable/ic_menu_send"
-            android:title="@string/title_pubs_bars" />
+                android:id="@+id/nav_pubs_bars"
+                android:icon="@drawable/ic_nav_food"
+                android:title="@string/title_pubs_bars" />
         <item
-            android:id="@+id/nav_pocket_friendly_delivery"
-            android:icon="@drawable/ic_menu_send"
-            android:title="@string/title_pocket_friendly_delivery" />
+                android:id="@+id/nav_pocket_friendly_delivery"
+                android:icon="@drawable/ic_nav_food"
+                android:title="@string/title_pocket_friendly_delivery" />
         <item
-            android:id="@+id/nav_club_lounges"
-            android:icon="@drawable/ic_menu_send"
-=======
-=======
->>>>>>> Stashed changes
-            android:icon="@drawable/ic_nav_food"
-            android:title="@string/title_nav_delivery" />
-        <item
-            android:id="@+id/nav_dine_out"
-            android:icon="@drawable/ic_nav_food"
-            android:title="@string/title_dine_out" />
-        <item
-            android:id="@+id/nav_nightlife"
-            android:icon="@drawable/ic_nav_food"
-            android:title="@string/title_nightlife" />
-        <item
-            android:id="@+id/nav_catching-up"
-            android:icon="@drawable/ic_nav_food"
-            android:title="@string/title_catching_up" />
-        <item
-            android:id="@+id/nav_takeaway"
-            android:icon="@drawable/ic_nav_food"
-            android:title="@string/title_takeaway" />
-        <item
-            android:id="@+id/nav_cafes"
-            android:icon="@drawable/ic_nav_food"
-            android:title="@string/title_cafes" />
-        <item
-            android:id="@+id/nav_daily_menus"
-            android:icon="@drawable/ic_nav_food"
-            android:title="@string/title_daily_menus" />
-        <item
-            android:id="@+id/nav_lunch"
-            android:icon="@drawable/ic_nav_food"
-            android:title="@string/title_lunch" />
-        <item
-            android:id="@+id/nav_breakfast"
-            android:icon="@drawable/ic_nav_food"
-            android:title="@string/title_breakfast" />
-        <item
-            android:id="@+id/nav_dinner"
-            android:icon="@drawable/ic_nav_food"
-            android:title="@string/title_dinner" />
-        <item
-            android:id="@+id/nav_pubs_bars"
-            android:icon="@drawable/ic_nav_food"
-            android:title="@string/title_pubs_bars" />
-        <item
-            android:id="@+id/nav_pocket_friendly_delivery"
-            android:icon="@drawable/ic_nav_food"
-            android:title="@string/title_pocket_friendly_delivery" />
-        <item
-            android:id="@+id/nav_club_lounges"
-            android:icon="@drawable/ic_nav_food"
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-            android:title="@string/title_club_lounges" />
+                android:id="@+id/nav_club_lounges"
+                android:icon="@drawable/ic_nav_food"
+                android:title="@string/title_club_lounges" />
     </group>
 
 </menu>

@@ -1,7 +1,24 @@
 <resources>
     <string name="app_name">Test Rappi</string>
+
+    <string name="city_name">Córdoba</string>
+    <string name="city_address">Argentina</string>
+    <string name="about_text">App display Interesting spot at City</string>
+
+
+    <!--=== GOOGLE API KEY STRING ============================================================== -->
+    <!-- API KEY FOR MAP -->
+    <string name="api_key">AIzaSyDr_GMyuKsspuPi-sauTWi-u3XoNCVQpyQ</string>
+
+
+    <!--=== Nav Drawer Menu Items ============================================================== -->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="title_home">Home</string>
-    <string name="title_nav_all">Restaurants</string>
+    <string name="title_nav_fav">Favorites</string>
+    <string name="title_nav_map">Map</string>
+
+    <string name="title_nav_all">All</string>
     <string name="title_nav_delivery">Delivery</string>
     <string name="title_dine_out">Dine-out</string>
     <string name="title_nightlife">Nightlife</string>
@@ -15,18 +32,117 @@
     <string name="title_pubs_bars">Pubs &amp; Bars</string>
     <string name="title_pocket_friendly_delivery">Pocket Friendly Delivery</string>
     <string name="title_club_lounges">Clubs &amp; Lounges</string>
-    <string name="title_activity_main">MainActivity</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_tools">Tools</string>
-    <string name="menu_share">Share</string>
-    <string name="menu_send">Send</string>
+    <!--=== activity FullScreenImage =========================================================== -->
+    <string name="image_of">%1$d of %2$d</string>
+
+    <!--=== activity Main ====================================================================== -->
+    <string name="press_again_exit_app">Press again to exit</string>
+
+    <!--=== activity Maps ====================================================================== -->
+    <string name="no_item_at">No Item at</string>
+    <string name="dialog_content_gps">
+        GPS is disabled in your device. Would you like to enable it?
+    </string>
+    <string name="activity_title_maps">Map</string>
+
+    <!--=== activity PlaceDetails ============================================================== -->
+    <string name="add_favorite">added to favorites</string>
+    <string name="remove_favorite">remove from favorites</string>
+    <string name="no_phone_number">do not have a phone</string>
+    <string name="no_website">do not have a website</string>
+    <string name="fail_dial_number">Cannot dial phone number</string>
+    <string name="fail_open_website">Cannot open website</string>
+    <string name="unable_create_map">Sorry! unable to create maps</string>
+    <string name="failed_load_details">Failed load place details</string>
+    <string name="photos_title">Photos</string>
+    <string name="description_title">Description</string>
+    <string name="map_title">Map</string>
+    <string name="map_view">VIEW</string>
+    <string name="map_navigate">NAVIGATE</string>
+
+    <!--=== activity Search ==================================================================== -->
+    <string name="hint_search">Search Place...</string>
+    <string name="please_fill">Please fill search input</string>
+
+
+    <string name="pref_key_notif">key_notifications</string>
+    <string name="pref_key_ringtone">key_ringtone</string>
+    <string name="pref_key_vibrate">key_vibrate</string>
+    <string name="pref_key_reset_cache">key_reset_cache</string>
+    <string name="pref_key_theme">key_theme</string>
+    <string name="dialog_confirm_title">Confirmation</string>
+    <string name="dialog_about_title">About</string>
+    <string name="activity_title_settings">Settings</string>
+
+
+    <!--=== activity Splash ==================================================================== -->
+    <string name="splash_welcome_text">WELCOME</string>
+    <string name="splash_desc_text">Browse all the interesting place using The City app</string>
+
+    <!--=== fragment Category ================================================================== -->
+    <string name="refresh_failed">Refresh failed</string>
+    <string name="load_of">Load %1$d of %2$d</string>
+    <string name="load_success">Successfully load data</string>
+
+    <!--=== Tools ============================================================================== -->
+    <string name="sharePlace">View good place</string>
+    <string name="shareLocated">located at</string>
+    <string name="shareApp">Using app</string>
+    <string name="shareUsing">Share using</string>
+
+    <!-- ==================== OTHERS STRING ==================================================== -->
+    <string name="action_settings">Settings</string>
+    <string name="no_internet">"No internet connection"</string>
+    <string name="task_running">Task still running</string>
+    <string name="no_item">No Item</string>
+
+    <!--Basic action Text-->
+    <string name="OK">OK</string>
+    <string name="YES">YES</string>
+    <string name="NO">NO</string>
+    <string name="SETTING">SETTING</string>
+    <string name="CANCEL">CANCEL</string>
+    <string name="SAVE">SAVE</string>
+    <string name="DISMISS">DISMISS</string>
+    <string name="HIDE">HIDE</string>
+    <string name="RETRY">RETRY</string>
+    <string name="DETAILS">DETAILS</string>
+    <string name="FAILED">FAILED</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="welcome_description">Welcome to Virtual Citizen. A fast and free digital tool that will be very useful in your city.</string>
+    <string name="welcome_description_2">Our anti-panic button allows you to quickly select a type of emergency that 911 receives and sends the right help staff to your location instantly.</string>
+    <string name="welcome_description_3">In addition, you can know all the places in the city, be aware of the news, make claims, and much more!</string>
+    <string name="welcome_title">Hello!</string>
+    <string name="welcome_title_2">Security features</string>
+    <string name="welcome_title_3">What you need, in one place</string>
+    <string name="welcome_next">NEXT</string>
+    <string name="welcome_back">BACK</string>
+    <string name="welcome_start">START</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="title_activity_register">Register</string>
+    <string name="title_activity_profile">Profile</string>
+    <string name="title_activity_map">Map</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+
+
+    <!--OAuth Credentials -->
+
+    <string name="web_client_id">554896515826-iilaie2tmb9td9gv7ejgp4ea9b2hvlg0.apps.googleusercontent.com</string>
+    <string name="category">Category</string>
+    <string name="refresh">Refresh</string>
+
+
 </resources>

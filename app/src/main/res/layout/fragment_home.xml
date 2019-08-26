@@ -1,150 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-=======
-=======
->>>>>>> Stashed changes
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragment.FragmentHome"
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-    android:background="@drawable/bg_app">
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context=".fragment.FragmentHome"
+             android:background="@drawable/bg_app">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/primary_color_box_rounded"
-        android:elevation="15dp"
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        android:visibility="gone"
-=======
-        android:visibility="visible"
->>>>>>> Stashed changes
-=======
-        android:visibility="visible"
->>>>>>> Stashed changes
-        style="@style/AppTheme.CardView">
-
-        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-            android:gravity="center"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
-            android:text=""
-=======
-=======
->>>>>>> Stashed changes
-            android:fontFamily="@font/gorditas"
-            android:gravity="center"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
-            android:text="@string/app_name"
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="#FFF" />
+            android:background="@drawable/primary_color_box_rounded"
+            android:elevation="15dp"
+            android:visibility="visible"
+            style="@style/AppTheme.CardView">
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/gorditas"
+                android:gravity="center"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:text="@string/app_name"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#FFF" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:visibility="gone"
-        android:gravity="center_vertical">
-
-
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
-=======
-
->>>>>>> Stashed changes
-        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:gravity="center_vertical">
+
+
+
+        <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center_vertical">
-
-
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
-
-                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:gravity="center">
+                    android:gravity="center_vertical">
+
+
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        style="@style/AppTheme.CardView"
-                        android:background="@drawable/white_text_box_rounded">
-                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            style="@style/CardView">
-
-                            <TextView
+                            style="@style/AppTheme.CardView"
+                            android:background="@drawable/white_text_box_rounded">
+                        <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginRight="10dp"
-                                android:fontFamily="@font/raleway"
-                                android:text="¿Aún no sabes cómo usar el botón de emergencias? ¡Mira el siguiente video!"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                                android:orientation="vertical"
+                                style="@style/CardView">
+
+                            <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:fontFamily="@font/raleway"
+                                    android:text="¿Aún no sabes cómo usar el botón de emergencias? ¡Mira el siguiente video!"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
                             <Button
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_margin="10dp"
-                                android:paddingLeft="10dp"
-                                android:paddingRight="15dp"
-                                android:background="@drawable/alert_color_box_rounded"
-                                android:fontFamily="@font/raleway_semibold"
-                                android:drawableLeft="@android:drawable/ic_media_play"
-                                android:text="Ver video"
-                                android:textColor="#fff" />
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_margin="10dp"
+                                    android:paddingLeft="10dp"
+                                    android:paddingRight="15dp"
+                                    android:background="@drawable/alert_color_box_rounded"
+                                    android:fontFamily="@font/raleway_semibold"
+                                    android:drawableLeft="@android:drawable/ic_media_play"
+                                    android:text="Ver video"
+                                    android:textColor="#fff" />
                         </LinearLayout>
 
 
                     </LinearLayout>
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        style="@style/AppTheme.CardView"
-                        android:background="@drawable/white_text_box_rounded">
-                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            style="@style/AppTheme.CardView"
+                            android:background="@drawable/white_text_box_rounded">
+                        <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
 
 
                         </RelativeLayout>
@@ -153,37 +109,37 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        style="@style/AppTheme.CardView"
-                        android:visibility="gone"
-                        android:background="@drawable/white_text_box_rounded">
-                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            style="@style/CardView">
+                            style="@style/AppTheme.CardView"
+                            android:visibility="gone"
+                            android:background="@drawable/white_text_box_rounded">
+                        <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                style="@style/CardView">
 
                             <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginRight="10dp"
-                                android:fontFamily="@font/raleway"
-                                android:text="Es importante que completes tus datos antes de poder utilizar la alerta."
-                                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:fontFamily="@font/raleway"
+                                    android:text="Es importante que completes tus datos antes de poder utilizar la alerta."
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
                             <Button
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_margin="10dp"
-                                android:background="@drawable/primary_color_box_rounded"
-                                android:fontFamily="@font/raleway_semibold"
-                                android:text="Registrarme"
-                                android:textColor="#fff" />
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_margin="10dp"
+                                    android:background="@drawable/primary_color_box_rounded"
+                                    android:fontFamily="@font/raleway_semibold"
+                                    android:text="Registrarme"
+                                    android:textColor="#fff" />
                         </LinearLayout>
 
 
@@ -191,10 +147,6 @@
 
                 </LinearLayout>
 
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
             </LinearLayout>
 
         </ScrollView>
