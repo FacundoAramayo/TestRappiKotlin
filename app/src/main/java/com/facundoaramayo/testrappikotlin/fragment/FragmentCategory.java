@@ -1,9 +1,15 @@
 package com.facundoaramayo.testrappikotlin.fragment;
 
+import android.Manifest;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -11,6 +17,7 @@ import android.util.Log;
 import android.view.*;
 import android.widget.TextView;
 import com.facundoaramayo.testrappikotlin.ActivityMainPlaces;
+import com.facundoaramayo.testrappikotlin.ActivityMaps;
 import com.facundoaramayo.testrappikotlin.ActivityPlaceDetail;
 import com.facundoaramayo.testrappikotlin.R;
 import com.facundoaramayo.testrappikotlin.adapter.AdapterPlaceGrid;
@@ -21,13 +28,20 @@ import com.facundoaramayo.testrappikotlin.data.DatabaseHandler;
 import com.facundoaramayo.testrappikotlin.data.SharedPref;
 import com.facundoaramayo.testrappikotlin.data.ThisApplication;
 import com.facundoaramayo.testrappikotlin.model.Place;
+import com.facundoaramayo.testrappikotlin.utils.PermissionUtil;
 import com.facundoaramayo.testrappikotlin.utils.Tools;
 import com.facundoaramayo.testrappikotlin.widget.SpacingItemDecoration;
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.LatLng;
 import retrofit2.Call;
 import retrofit2.Response;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.facundoaramayo.testrappikotlin.utils.Tools.getLastKnownLocation;
 
 public class FragmentCategory extends Fragment {
 
@@ -185,45 +199,53 @@ public class FragmentCategory extends Fragment {
 
     private boolean onProcess = false;
 
+
+
     private void onRefresh(final int page_no) {
         onProcess = true;
         showProgress(onProcess);
-        callback = RestAdapter.createAPI().getPlacesByPage(Constant.city_lat,Constant.city_lng,1,1,10);
+        Location loc = getLastKnownLocation(getContext());
+        if (loc != null){
+            callback = RestAdapter.createAPI().getPlacesByPage(loc.getLatitude(),loc.getLongitude(),2,0,40);
+        } else {
+            callback = RestAdapter.createAPI().getPlacesByPage(40.28422,-84.1555,2,0,40);
+        }
         callback.enqueue(new retrofit2.Callback<CallbackListPlace>() {
-            @Override
-            public void onResponse(Call<CallbackListPlace> call, Response<CallbackListPlace> response) {
-                CallbackListPlace resp = response.body();
+                @Override
+                public void onResponse(Call<CallbackListPlace> call, Response<CallbackListPlace> response) {
+                    CallbackListPlace resp = response.body();
 
-                Log.d("LOG-CONVERSION", "START");
-                List<Place> placesToInsert = Tools.convertRestaurantContainerToPlace(resp.getRestaurants());
+                    Log.d("LOG-CONVERSION", "START");
+                    List<Place> placesToInsert = Tools.convertRestaurantContainerToPlace(resp.getRestaurants());
 
-                if (resp != null) {
-                    //TODO: luego de verificar el comportamiento de la app, cambiar shown por found
-                    results_found = resp.getResults_shown();
-                    if (page_no == 1) db.refreshTablePlace();
-                    db.insertListPlace(placesToInsert);  // save result into database
-                    sharedPref.setLastPlacePage(page_no + 1);
-                    delayNextRequest(page_no);
-                    String str_progress = String.format(getString(R.string.load_of), (page_no * Constant.LIMIT_PLACE_REQUEST), results_found);
-                    text_progress.setText(str_progress);
-                } else {
-                    onFailureRetry(page_no, getString(R.string.refresh_failed));
-                }
-            }
-
-            @Override
-            public void onFailure(Call<CallbackListPlace> call, Throwable t) {
-                if (call != null && !call.isCanceled()) {
-                    Log.e("onFailure", t.getMessage());
-                    boolean conn = Tools.checkConnection(getActivity());
-                    if (conn) {
-                        onFailureRetry(page_no, getString(R.string.refresh_failed));
+                    if (resp != null) {
+                        //TODO: luego de verificar el comportamiento de la app, cambiar shown por found
+                        results_found = resp.getResults_shown();
+                        if (page_no == 1) db.refreshTablePlace();
+                        db.insertListPlace(placesToInsert);  // save result into database
+                        sharedPref.setLastPlacePage(page_no + 1);
+                        delayNextRequest(page_no);
+                        String str_progress = String.format(getString(R.string.load_of), (page_no * Constant.LIMIT_PLACE_REQUEST), results_found);
+                        text_progress.setText(str_progress);
                     } else {
-                        onFailureRetry(page_no, getString(R.string.no_internet));
+                        onFailureRetry(page_no, getString(R.string.refresh_failed));
                     }
                 }
-            }
-        });
+
+                @Override
+                public void onFailure(Call<CallbackListPlace> call, Throwable t) {
+                    if (call != null && !call.isCanceled()) {
+                        Log.e("onFailure", t.getMessage());
+                        boolean conn = Tools.checkConnection(getActivity());
+                        if (conn) {
+                            onFailureRetry(page_no, getString(R.string.refresh_failed));
+                        } else {
+                            onFailureRetry(page_no, getString(R.string.no_internet));
+                        }
+                    }
+                }
+            });
+
     }
 
     private void showProgress(boolean show) {

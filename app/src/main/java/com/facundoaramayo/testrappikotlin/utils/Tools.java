@@ -378,14 +378,16 @@ public class Tools {
             localPlace.setName(resItem.getName());
             localPlace.setImage(resItem.getThumb());
             localPlace.setAddress(resLocation.getAddress());
+            localPlace.setLat(Double.parseDouble(String.valueOf(resLocation.getLatitude())));
+            localPlace.setLng(Double.parseDouble(String.valueOf(resLocation.getLongitude())));
             localPlace.setPhone(resItem.getPhone_numbers());
             localPlace.setWebsite(resItem.getUrl());
             localPlace.setDescription(
                     "<!DOCTYPE html>\n" +
                             "<html>\n" +
-                            "  <head>\n" +
-                            "    <title>" + resItem.getCuisines() + "</title>"+
-                            "  </head>" +
+                            "<head>\n" +
+                            "<title>" + resItem.getCuisines() + "</title>"+
+                            "</head>" +
                             "<body>\n" +
                             "<h4>Cuisiness: " + resItem.getCuisines() + "</h4>"+
                             "<h4>Price range: " + priceCategory + "</h4>"+
@@ -394,7 +396,7 @@ public class Tools {
                             "<h4>Online delivery: " + hasOnlineDelivery + "</h4>"+
                             "<h4>Delivery: " + isDeliveringNow + "</h4>"+
                             "<h4>Bookings: " + hasTableBooking + "</h4>"+
-                            "  </body>\n" +
+                            "</body>\n" +
                             "</html>");
 
             //TODO: Post - Agregar fotos y reviews

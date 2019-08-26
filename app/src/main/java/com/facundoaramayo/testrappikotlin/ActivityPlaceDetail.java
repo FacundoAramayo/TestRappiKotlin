@@ -272,7 +272,6 @@ public class ActivityPlaceDetail extends AppCompatActivity {
         findViewById(R.id.bt_navigate).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO: Implementar aquí los cambios dinamicos de ubicación en maps
                 //Intent navigation = new Intent(Intent.ACTION_VIEW, Uri.parse("http://maps.google.com/maps?daddr=" + place.lat + "," + place.lng));
                 Intent navigation = new Intent(Intent.ACTION_VIEW, Uri.parse("http://maps.google.com/maps?daddr=" + 0 + "," + 0));
 

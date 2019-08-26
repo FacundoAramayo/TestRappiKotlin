@@ -4,10 +4,6 @@ public class Constant {
 
     public static String WEB_URL = "https://developers.zomato.com/";
 
-    //TODO: Quitar datos estáticos de geoposicionamiento
-    /*Los Ángeles*/
-    public static final double city_lat = 33.94;
-    public static final double city_lng = -118.41;
     public static final float city_zoom = 10;
 
     public static String getURLimgPlace(String file_name) {

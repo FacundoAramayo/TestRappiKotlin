@@ -1,21 +1,27 @@
 package com.facundoaramayo.testrappikotlin;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 import com.facundoaramayo.testrappikotlin.data.Constant;
 import com.facundoaramayo.testrappikotlin.data.DatabaseHandler;
 import com.facundoaramayo.testrappikotlin.model.Category;
@@ -30,6 +36,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.maps.android.clustering.ClusterManager;
 import com.google.maps.android.clustering.view.DefaultClusterRenderer;
 
+import java.security.Permission;
 import java.util.HashMap;
 import java.util.List;
 
@@ -83,43 +90,67 @@ public class ActivityMaps extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = Tools.configActivityMaps(googleMap);
-        CameraUpdate location;
+        CameraUpdate location = null;
         if (isSinglePlace) {
             marker_bg.setColorFilter(getResources().getColor(R.color.marker_secondary));
             MarkerOptions markerOptions = new MarkerOptions().title(ext_place.getName()).position(ext_place.getPosition());
             markerOptions.icon(BitmapDescriptorFactory.fromBitmap(Tools.createBitmapFromView(ActivityMaps.this, marker_view)));
             mMap.addMarker(markerOptions);
-            location = CameraUpdateFactory.newLatLngZoom(ext_place.getPosition(), 12);
+            location = CameraUpdateFactory.newLatLngZoom(ext_place.getPosition(), Constant.city_zoom);
             actionBar.setTitle(ext_place.getName());
         } else {
-            location = CameraUpdateFactory.newLatLngZoom(new LatLng(Constant.city_lat, Constant.city_lng), Constant.city_zoom);
+            try {
+                final LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+                if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                    showAlertDialogGps();
+                } else {
+                    Location loc = Tools.getLastKnownLocation(ActivityMaps.this);
+                    location = CameraUpdateFactory.newLatLngZoom(new LatLng(loc.getLatitude(), loc.getLongitude()), Constant.city_zoom);
+                    mMap.animateCamera(location);
+                }
+            } catch (Exception e) {
+                Log.d("LOG-", "Exception: " + e.toString());
+                PermissionUtil.showSystemDialogPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
+            }
             mClusterManager = new ClusterManager<>(this, mMap);
             placeMarkerRenderer = new PlaceMarkerRenderer(this, mMap, mClusterManager);
             mClusterManager.setRenderer(placeMarkerRenderer);
             mMap.setOnCameraChangeListener(mClusterManager);
             loadClusterManager(db.getAllPlace());
         }
-        mMap.animateCamera(location);
-        mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
-            @Override
-            public void onInfoWindowClick(Marker marker) {
-                Place place;
-                if (hashMapPlaces.get(marker.getId()) != null) {
-                    place = hashMapPlaces.get(marker.getId());
-                } else {
-                    place = ext_place;
-                }
-                ActivityPlaceDetail.navigate(ActivityMaps.this, parent_view, place);
-            }
-        });
 
-        showMyLocation();
+        if (location != null){
+            mMap.animateCamera(location);
+            mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+                @Override
+                public void onInfoWindowClick(Marker marker) {
+                    Place place;
+                    if (hashMapPlaces.get(marker.getId()) != null) {
+                        place = hashMapPlaces.get(marker.getId());
+                    } else {
+                        place = ext_place;
+                    }
+                    ActivityPlaceDetail.navigate(ActivityMaps.this, parent_view, place);
+                }
+            });
+
+            showMyLocation();
+        }
     }
 
     private void showMyLocation() {
         if (PermissionUtil.isLocationGranted(this)) {
             // Enable / Disable my location button
             mMap.getUiSettings().setMyLocationButtonEnabled(true);
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return;
+            }
             mMap.setMyLocationEnabled(true);
             mMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
                 @Override
@@ -130,7 +161,7 @@ public class ActivityMaps extends AppCompatActivity implements OnMapReadyCallbac
                             showAlertDialogGps();
                         } else {
                             Location loc = Tools.getLastKnownLocation(ActivityMaps.this);
-                            CameraUpdate myCam = CameraUpdateFactory.newLatLngZoom(new LatLng(loc.getLatitude(), loc.getLongitude()), 12);
+                            CameraUpdate myCam = CameraUpdateFactory.newLatLngZoom(new LatLng(loc.getLatitude(), loc.getLongitude()), Constant.city_zoom);
                             mMap.animateCamera(myCam);
                         }
                     } catch (Exception e) {
@@ -138,6 +169,8 @@ public class ActivityMaps extends AppCompatActivity implements OnMapReadyCallbac
                     return true;
                 }
             });
+        } else {
+            PermissionUtil.showSystemDialogPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
         }
     }
 
