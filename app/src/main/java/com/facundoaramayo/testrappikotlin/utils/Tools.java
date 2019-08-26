@@ -389,13 +389,13 @@ public class Tools {
                             "<title>" + resItem.getCuisines() + "</title>"+
                             "</head>" +
                             "<body>\n" +
-                            "<h4>Cuisiness: " + resItem.getCuisines() + "</h4>"+
-                            "<h4>Price range: " + priceCategory + "</h4>"+
-                            "<h4>Currency: " + resItem.getCurrency() + "</h4>"+
-                            "<h4>Average cost fow two: " + resItem.getAverage_cost_for_two() + resItem.getCurrency() + "</h4>"+
-                            "<h4>Online delivery: " + hasOnlineDelivery + "</h4>"+
-                            "<h4>Delivery: " + isDeliveringNow + "</h4>"+
-                            "<h4>Bookings: " + hasTableBooking + "</h4>"+
+                            "<p><b>Cuisiness: </b>" + resItem.getCuisines() + "</p>"+
+                            "<p><b>Price range: </b>" + priceCategory + "</p>"+
+                            "<p><b>Currency: </b>" + resItem.getCurrency() + "</p>"+
+                            "<p><b>Average cost for two: </b>" + resItem.getCurrency() + resItem.getAverage_cost_for_two() +  "</p>"+
+                            "<p><b>Online delivery: </b>" + hasOnlineDelivery + "</p>"+
+                            "<p><b>Delivery: </b>" + isDeliveringNow + "</p>"+
+                            "<p><b>Bookings: </b>" + hasTableBooking + "</p>"+
                             "</body>\n" +
                             "</html>");
 
