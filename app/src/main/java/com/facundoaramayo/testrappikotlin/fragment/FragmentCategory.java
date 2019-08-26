@@ -131,16 +131,20 @@ public class FragmentCategory extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        if (category_id != 0) {
-            //TODO: implementar la nueva búsqueda por categoría
+        Log.d("LOG-", "OPTION SELECTED: " + category_id);
+        if (category_id == -1){
+            actionRefresh(1, category_id, true);
+        }
+        if (category_id == -2){
+            actionRefresh(1, category_id, true);
+        }
+        if (category_id > 0) {
             Log.d("LOG-", "Nueva búsqueda");
-            actionRefresh(1, category_id);
-
-
+            actionRefresh(1, category_id, false);
 
         }
         if (sharedPref.isRefreshPlaces() || db.getPlacesSize() == 0) {
-            actionRefresh(sharedPref.getLastPlacePage(), 0);
+            actionRefresh(sharedPref.getLastPlacePage(), 0, false);
             //startLoadMoreAdapter();
         }
     }
@@ -159,7 +163,7 @@ public class FragmentCategory extends Fragment {
             sharedPref.setRefreshPlaces(true);
             text_progress.setText("");
             if (snackbar_retry != null) snackbar_retry.dismiss();
-            actionRefresh(sharedPref.getLastPlacePage(), 0);
+            actionRefresh(sharedPref.getLastPlacePage(), 0, true);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -194,11 +198,11 @@ public class FragmentCategory extends Fragment {
         }, 500);
     }
 
-    private void actionRefresh(int page_no, int category) {
+    private void actionRefresh(int page_no, int category, boolean fromDB) {
         boolean conn = Tools.checkConnection(getActivity());
         if (conn) {
             if (!onProcess) {
-                onRefresh(page_no, category);
+                onRefresh(page_no, category, fromDB);
             } else {
                 Snackbar.make(root_view, R.string.task_running, Snackbar.LENGTH_SHORT).show();
             }
@@ -210,9 +214,39 @@ public class FragmentCategory extends Fragment {
 
 
 
-    private void onRefresh(final int page_no, int category) {
+    private void onRefresh(final int page_no, final int category, boolean fromDB) {
         onProcess = true;
         showProgress(onProcess);
+        if (fromDB){
+            adapter.setLoading();
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Log.d("LOG-","Get Places: " + category);
+                    List<Place> items = db.getPlacesByPage(category, Constant.LIMIT_LOADMORE, sharedPref.getLastPlacePage());
+
+                    Log.d("LOG-","Places: " + items.size());
+                    adapter.insertData(items);
+                    adapter.setLoaded();
+//                    showNoItemView();
+//                    final int item_count = db.getPlacesSize(category_id);
+//                    adapter.setOnLoadMoreListener(new AdapterPlaceGrid.OnLoadMoreListener() {
+//                        @Override
+//                        public void onLoadMore(final int current_page) {
+//                            if (item_count > adapter.getItemCount() && current_page != 0) {
+//                                displayDataByPage(current_page);
+//                            } else {
+//                                adapter.setLoaded();
+//                            }
+//                        }
+//                    });
+
+                }
+            }, 500);
+            showProgress(false);
+            return;
+        }
+        Log.d("LOG-", "BAD RETURN");
         Location loc = getLastKnownLocation(getContext());
         if (loc != null){
             callback = RestAdapter.createAPI().getPlacesByPage(loc.getLatitude(),loc.getLongitude(),2,20, "real_distance", "asc");
@@ -231,21 +265,11 @@ public class FragmentCategory extends Fragment {
                         results_found = resp.getResults_shown();
                         if (page_no == 1) db.refreshTablePlace();
                         db.insertListPlace(placesToInsert);  // save result into database
+                        adapter.insertData(placesToInsert);
                         sharedPref.setLastPlacePage(page_no + 1);
                         delayNextRequest(page_no);
                         String str_progress = String.format(getString(R.string.load_of), (page_no * Constant.LIMIT_PLACE_REQUEST), results_found);
                         text_progress.setText(str_progress);
-
-                        adapter.setLoading();
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                //List<Place> items = db.getPlacesByPage(category_id, Constant.LIMIT_LOADMORE, (next_page * Constant.LIMIT_LOADMORE));
-                                adapter.insertData(placesToInsert);
-                                showNoItemView();
-                            }
-                        }, 500);
-
                     } else {
                         onFailureRetry(page_no, getString(R.string.refresh_failed));
                     }
@@ -295,7 +319,7 @@ public class FragmentCategory extends Fragment {
         snackbar_retry.setAction(R.string.RETRY, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                actionRefresh(page_no, 0);
+                actionRefresh(page_no, 0, false);
             }
         });
         snackbar_retry.show();
@@ -318,7 +342,7 @@ public class FragmentCategory extends Fragment {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                onRefresh(page_no + 1, 0);
+                onRefresh(page_no + 1, 0, false);
             }
         }, 500);
     }

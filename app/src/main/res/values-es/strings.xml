@@ -14,59 +14,59 @@
     <!--=== Nav Drawer Menu Items ============================================================== -->
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="title_home">Home</string>
-    <string name="title_nav_fav">Favorites</string>
-    <string name="title_nav_map">Map</string>
+    <string name="title_home">Inicio</string>
+    <string name="title_nav_fav">Favoritos</string>
+    <string name="title_nav_map">Mapa</string>
 
-    <string name="title_nav_all">All restaurants</string>
+    <string name="title_nav_all">Restaurantes</string>
     <string name="title_nav_delivery">Delivery</string>
-    <string name="title_dine_out">Dine-out</string>
-    <string name="title_nightlife">Nightlife</string>
+    <string name="title_dine_out">Cenar fuera</string>
+    <string name="title_nightlife">Vida nocturna</string>
     <string name="title_catching_up">Catching-up</string>
-    <string name="title_takeaway">Takeaway</string>
-    <string name="title_cafes">Cafes</string>
-    <string name="title_daily_menus">Daily Menus</string>
-    <string name="title_breakfast">Breakfast</string>
-    <string name="title_lunch">Lunch</string>
-    <string name="title_dinner">Dinner</string>
-    <string name="title_pubs_bars">Pubs &amp; Bars</string>
-    <string name="title_pocket_friendly_delivery">Pocket Friendly Delivery</string>
-    <string name="title_club_lounges">Clubs &amp; Lounges</string>
+    <string name="title_takeaway">Para llevar</string>
+    <string name="title_cafes">Cafés</string>
+    <string name="title_daily_menus">Menú diario</string>
+    <string name="title_breakfast">Desayuno</string>
+    <string name="title_lunch">Almuerzo</string>
+    <string name="title_dinner">Cena</string>
+    <string name="title_pubs_bars">Pubs y bares</string>
+    <string name="title_pocket_friendly_delivery">Delivery amigable</string>
+    <string name="title_club_lounges">Clubs y salones</string>
 
     <!--=== activity FullScreenImage =========================================================== -->
     <string name="image_of">%1$d of %2$d</string>
 
     <!--=== activity Main ====================================================================== -->
-    <string name="press_again_exit_app">Press again to exit</string>
+    <string name="press_again_exit_app">Presiona de nuevo para salir</string>
 
     <!--=== activity Maps ====================================================================== -->
-    <string name="no_item_at">No Item at</string>
+    <string name="no_item_at">No hay item</string>
     <string name="dialog_content_gps">
-        GPS is disabled in your device. Would you like to enable it?
+        El GPS está deshabilitado en su dispositivo. ¿Te gustaría habilitarlo?
     </string>
-    <string name="activity_title_maps">Map</string>
+    <string name="activity_title_maps">Mapa</string>
 
     <!--=== activity PlaceDetails ============================================================== -->
-    <string name="add_favorite">added to favorites</string>
-    <string name="remove_favorite">remove from favorites</string>
-    <string name="no_phone_number">do not have a phone</string>
-    <string name="no_website">do not have a website</string>
-    <string name="go_to_website">Go to website</string>
+    <string name="add_favorite">Agregado a favoritos</string>
+    <string name="remove_favorite">Remover de favoritos</string>
+    <string name="no_phone_number">No tiene teléfono</string>
+    <string name="no_website">No tiene sitio web</string>
+    <string name="go_to_website">Ir al sitio web</string>
     <string name="fail_dial_number">Cannot dial phone number</string>
     <string name="fail_open_website">Cannot open website</string>
     <string name="unable_create_map">Sorry! unable to create maps</string>
     <string name="failed_load_details">Failed load place details</string>
-    <string name="photos_title">Photos</string>
-    <string name="description_title">Description</string>
-    <string name="open_map">Open map</string>
-    <string name="search_nearby_restaurants">Search nearby restaurants</string>
-    <string name="map_title">Map</string>
-    <string name="map_view">VIEW</string>
-    <string name="map_navigate">NAVIGATE</string>
+    <string name="photos_title">Fotos</string>
+    <string name="description_title">Descripción</string>
+    <string name="open_map">Abrir mapa</string>
+    <string name="search_nearby_restaurants">Buscar restaurantes cercanos</string>
+    <string name="map_title">Mapa</string>
+    <string name="map_view">Ver</string>
+    <string name="map_navigate">Navegar</string>
 
     <!--=== activity Search ==================================================================== -->
-    <string name="hint_search">Search Place...</string>
-    <string name="please_fill">Please fill search input</string>
+    <string name="hint_search">Buscar restaurante</string>
+    <string name="please_fill">Por favor, completa</string>
 
 
     <string name="pref_key_notif">key_notifications</string>
@@ -80,13 +80,13 @@
 
 
     <!--=== activity Splash ==================================================================== -->
-    <string name="splash_welcome_text">WELCOME</string>
-    <string name="splash_desc_text">Browse all the restaurants in your City</string>
+    <string name="splash_welcome_text">Bienvenido</string>
+    <string name="splash_desc_text">Busca entre todos los restaurantes de la ciudad</string>
 
     <!--=== fragment Category ================================================================== -->
-    <string name="refresh_failed">Refresh failed</string>
-    <string name="load_of">Load %1$d of %2$d</string>
-    <string name="load_success">Successfully load data</string>
+    <string name="refresh_failed">Actualización falló</string>
+    <string name="load_of">Cargando %1$d of %2$d</string>
+    <string name="load_success">Carga exitosa</string>
 
     <!--=== Tools ============================================================================== -->
     <string name="sharePlace">View good place</string>
@@ -97,15 +97,15 @@
     <!-- ==================== OTHERS STRING ==================================================== -->
     <string name="action_settings">Settings</string>
     <string name="no_internet">"No internet connection"</string>
-    <string name="task_running">Loading...</string>
+    <string name="task_running">Cargando...</string>
     <string name="no_item">No Item</string>
 
     <!--Basic action Text-->
     <string name="OK">OK</string>
-    <string name="YES">YES</string>
+    <string name="YES">SI</string>
     <string name="NO">NO</string>
     <string name="SETTING">SETTING</string>
-    <string name="CANCEL">CANCEL</string>
+    <string name="CANCEL">CANCELAR</string>
     <string name="SAVE">SAVE</string>
     <string name="DISMISS">DISMISS</string>
     <string name="HIDE">HIDE</string>
@@ -120,7 +120,6 @@
     <string name="title_activity_register">Register</string>
     <string name="title_activity_profile">Profile</string>
     <string name="title_activity_map">Map</string>
-
 
 
     <!--OAuth Credentials -->
