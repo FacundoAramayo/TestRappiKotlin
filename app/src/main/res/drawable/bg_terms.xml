@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
-=======
-
->>>>>>> Stashed changes
+    <!--<stroke-->
+        <!--android:width="3dp"-->
+        <!--android:color="#999999">-->
+    <!--</stroke>-->
     <gradient
         android:angle="270"
-        android:startColor="#fff"
-        android:endColor="#c1d3e3">
+        android:startColor="#c1d3e3"
+        android:endColor="#8eb1d0">
     </gradient>
 </shape>

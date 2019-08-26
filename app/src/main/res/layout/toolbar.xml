@@ -8,4 +8,14 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
     app:contentInsetStartWithNavigation="0dp"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
     app:titleTextAppearance="@android:style/TextAppearance.Material.Widget.Toolbar.Title" />
+=======
+    app:titleTextAppearance="@android:style/TextAppearance.Material.Widget.Toolbar.Title" />
+
+>>>>>>> Stashed changes
+=======
+    app:titleTextAppearance="@android:style/TextAppearance.Material.Widget.Toolbar.Title" />
+
+>>>>>>> Stashed changes

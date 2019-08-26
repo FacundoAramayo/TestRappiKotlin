@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--this id_category must be same with id_category server database-->
+    <!--<item>cat_id same with server database value</item> -->
+    <integer-array name="id_category">
+        <item>1</item> <!--DELIVERY-->
+        <item>2</item> <!--DINE-OUT-->
+        <item>3</item> <!--NIGHTLIFE-->
+        <item>4</item> <!--CATCHING-UP-->
+        <item>5</item> <!--TAKEAWAY-->
+        <item>6</item> <!--CAFES-->
+        <item>7</item> <!--DAILY MENUS-->
+        <item>8</item> <!--BREAKFAST-->
+        <item>9</item> <!--LUNCH-->
+        <item>10</item> <!--DINNER-->
+        <item>11</item> <!--PUBS & BARS-->
+        <item>12</item> <!--POCKET FRIENDLY DELIVERY-->
+        <item>13</item> <!--CLUB & LOUNGES-->
+    </integer-array>
+
+    <string-array name="category_name">
+        <item>Tourist Destination</item>
+        <item>Food \u0026 Drink</item>
+        <item>Hotels</item>
+        <item>Entertainment</item>
+        <item>Sport</item>
+        <item>Shopping</item>
+        <item>Transportation</item>
+        <item>Religion</item>
+        <item>Public Services</item>
+        <item>Money</item>
+        <item>Featured Places</item>
+        <item>Rentals</item>
+        <item>Rentals</item>
+    </string-array>
+
+    <integer-array name="category_icon">
+        <item>@drawable/ic_nav_food</item>
+        <item>@drawable/ic_nav_food</item>
+        <item>@drawable/ic_nav_food</item>
+        <item>@drawable/ic_nav_food</item>
+        <item>@drawable/ic_nav_food</item>
+        <item>@drawable/ic_nav_food</item>
+        <item>@drawable/ic_nav_food</item>
+        <item>@drawable/ic_nav_food</item>
+        <item>@drawable/ic_nav_food</item>
+        <item>@drawable/ic_nav_food</item>
+        <item>@drawable/ic_nav_food</item>
+    </integer-array>
+
+
+</resources>

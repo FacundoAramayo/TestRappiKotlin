@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_category"
+        android:icon="@drawable/ic_menu_category"
+        android:title="@string/category"
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/nav_all"
+                android:title="@string/title_nav_all"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/nav_delivery"
+                app:showAsAction="never"
+                android:title="@string/title_nav_delivery" />
+            <item
+                android:id="@+id/nav_dine_out"
+                app:showAsAction="never"
+                android:title="@string/title_dine_out" />
+            <item
+                android:id="@+id/nav_nightlife"
+                app:showAsAction="never"
+                android:title="@string/title_nightlife" />
+            <item
+                android:id="@+id/nav_catching-up"
+                app:showAsAction="never"
+                android:title="@string/title_catching_up" />
+            <item
+                android:id="@+id/nav_takeaway"
+                app:showAsAction="never"
+                android:title="@string/title_takeaway" />
+            <item
+                android:id="@+id/nav_cafes"
+                app:showAsAction="never"
+                android:title="@string/title_cafes" />
+            <item
+                android:id="@+id/nav_daily_menus"
+                app:showAsAction="never"
+                android:title="@string/title_daily_menus" />
+            <item
+                android:id="@+id/nav_lunch"
+                app:showAsAction="never"
+                android:title="@string/title_lunch" />
+            <item
+                android:id="@+id/nav_breakfast"
+                app:showAsAction="never"
+                android:title="@string/title_breakfast" />
+            <item
+                android:id="@+id/nav_dinner"
+                app:showAsAction="never"
+                android:title="@string/title_dinner" />
+            <item
+                android:id="@+id/nav_pubs_bars"
+                app:showAsAction="never"
+                android:title="@string/title_pubs_bars" />
+            <item
+                android:id="@+id/nav_pocket_friendly_delivery"
+                app:showAsAction="never"
+                android:title="@string/title_pocket_friendly_delivery" />
+            <item
+                android:id="@+id/nav_club_lounges"
+                app:showAsAction="never"
+                android:title="@string/title_club_lounges" />
+        </menu>
+
+    </item>
+</menu>
