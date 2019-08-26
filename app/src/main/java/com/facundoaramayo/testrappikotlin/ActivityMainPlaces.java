@@ -76,10 +76,18 @@ public class ActivityMainPlaces extends AppCompatActivity {
         // first drawer view
         onItemSelected(R.id.nav_home, getString(R.string.title_home));
 
-        fab.setOnClickListener(new View.OnClickListener() {
+        fab_search_by_name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(ActivityMainPlaces.this, ActivitySearch.class);
+                startActivity(i);
+            }
+        });
+
+        fab_search_by_location.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(ActivityMainPlaces.this, ActivityMaps.class);
                 startActivity(i);
             }
         });
