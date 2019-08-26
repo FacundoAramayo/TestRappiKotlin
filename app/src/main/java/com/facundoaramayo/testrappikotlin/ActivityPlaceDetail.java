@@ -117,7 +117,7 @@ public class ActivityPlaceDetail extends AppCompatActivity {
     private void displayData(Place p) {
         ((TextView) findViewById(R.id.address)).setText(p.getAddress());
         ((TextView) findViewById(R.id.phone)).setText(p.getPhone().equals("-") || p.getPhone().trim().equals("") ? getString(R.string.no_phone_number) : p.getPhone());
-        ((TextView) findViewById(R.id.website)).setText(p.getWebsite().equals("-") || p.getWebsite().trim().equals("") ? getString(R.string.no_website) : p.getWebsite());
+        ((TextView) findViewById(R.id.website)).setText(p.getWebsite().equals("-") || p.getWebsite().trim().equals("") ? getString(R.string.no_website) : getString(R.string.go_to_website));
 
         description = findViewById(R.id.description);
         String html_data = "<style>img{max-width:100%;height:auto;} iframe{width:100%;}</style> ";
@@ -155,28 +155,25 @@ public class ActivityPlaceDetail extends AppCompatActivity {
     public void clickLayout(View view) {
         switch (view.getId()) {
             case R.id.lyt_address:
-                //TODO: Abrir mapa en la ubicación del restaurant
-//                if (!place.isDraft()) {
-//                    Uri uri = Uri.parse("http://maps.google.com/maps?q=loc:" + place.lat + "," + place.lng);
-//                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-//                    startActivity(intent);
-//                }
+                if (!place.isDraft()) {
+                    Uri uri = Uri.parse("http://maps.google.com/maps?q=loc:" + place.getLat() + "," + place.getLng());
+                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                    startActivity(intent);
+                }
                 break;
             case R.id.lyt_phone:
-                //TODO: Call intent para el restaurant, revisar aquellos que tienen varios teléfonos
-//                if (!place.isDraft() && !place.phone.equals("-") && !place.phone.trim().equals("")) {
-//                    Tools.dialNumber(this, place.phone);
-//                } else {
-//                    Snackbar.make(parent_view, R.string.fail_dial_number, Snackbar.LENGTH_SHORT).show();
-//                }
+                if (!place.isDraft() && !place.getPhone().equals("-") && !place.getPhone().trim().equals("")) {
+                    Tools.dialNumber(this, place.getPhone());
+                } else {
+                    Snackbar.make(parent_view, R.string.fail_dial_number, Snackbar.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.lyt_website:
-                //TODO: Web browser intent al sitio del restaurant
-//                if (!place.isDraft() && !place.website.equals("-") && !place.website.trim().equals("")) {
-//                    Tools.directUrl(this, place.website);
-//                } else {
-//                    Snackbar.make(parent_view, R.string.fail_open_website, Snackbar.LENGTH_SHORT).show();
-//                }
+                if (!place.isDraft() && !place.getWebsite().equals("-") && !place.getWebsite().trim().equals("")) {
+                    Tools.directUrl(this, place.getWebsite());
+                } else {
+                    Snackbar.make(parent_view, R.string.fail_open_website, Snackbar.LENGTH_SHORT).show();
+                }
                 break;
         }
     }

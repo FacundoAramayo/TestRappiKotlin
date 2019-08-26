@@ -338,25 +338,65 @@ public class Tools {
             Log.d("LOG-CONVERSION " + i, "RestaurantItem id: " + resItem.getId());
             Log.d("LOG-CONVERSION " + i, "RestaurantItem name: " + resItem.getName());
 
+            String priceCategory = "";
+            switch (resItem.getPrice_range()) {
+                case 1:
+                    priceCategory = "$";
+                    break;
+                case 2:
+                    priceCategory = "$$";
+                    break;
+                case 3:
+                    priceCategory = "$$$";
+                    break;
+                case 4:
+                    priceCategory = "$$$$";
+                    break;
+            }
+            String hasOnlineDelivery;
+            String isDeliveringNow;
+            String hasTableBooking;
+            if (resItem.getHas_online_delivery() == 1){
+                hasOnlineDelivery = "Has online delivery";
+            } else {
+                hasOnlineDelivery = "Has not online delivery";
+            }
+            if (resItem.is_delivering_now() == 1){
+                isDeliveringNow = "Delivering... call now!";
+            } else {
+                isDeliveringNow = "Not yet";
+            }
+            if (resItem.getHas_table_booking() == 1){
+                hasTableBooking = "¡Book a table now!";
+            } else {
+                hasTableBooking = "Has not tables for booking";
+            }
+
+
             Place localPlace = new Place();
             localPlace.setPlace_id(resItem.getId());
             localPlace.setName(resItem.getName());
             localPlace.setImage(resItem.getThumb());
-            localPlace.setAddress(resLocation.getAddress() + ", " +
-                    resLocation.getLocality() + ", " + resLocation.getCity());
+            localPlace.setAddress(resLocation.getAddress());
             localPlace.setPhone(resItem.getPhone_numbers());
             localPlace.setWebsite(resItem.getUrl());
             localPlace.setDescription(
-                    resItem.getCuisines() + " - " +
-                            resItem.getPrice_range() + " - " +
-                            resItem.getCurrency() + " - " +
-                            resItem.getAverage_cost_for_two() + " - " +
-                            resItem.getAll_reviews_count() + " - " +
-                            resItem.getHas_online_delivery() + " - " +
-                            resItem.is_delivering_now() + " - " +
-                            resItem.getHas_table_booking());
-            localPlace.setLat(Float.parseFloat(resLocation.getLatitude()));
-            localPlace.setLng(Float.parseFloat(resLocation.getLongitude()));
+                    "<!DOCTYPE html>\n" +
+                            "<html>\n" +
+                            "  <head>\n" +
+                            "    <title>" + resItem.getCuisines() + "</title>"+
+                            "  </head>" +
+                            "<body>\n" +
+                            "<h4>Cuisiness: " + resItem.getCuisines() + "</h4>"+
+                            "<h4>Price range: " + priceCategory + "</h4>"+
+                            "<h4>Currency: " + resItem.getCurrency() + "</h4>"+
+                            "<h4>Average cost fow two: " + resItem.getAverage_cost_for_two() + resItem.getCurrency() + "</h4>"+
+                            "<h4>Online delivery: " + hasOnlineDelivery + "</h4>"+
+                            "<h4>Delivery: " + isDeliveringNow + "</h4>"+
+                            "<h4>Bookings: " + hasTableBooking + "</h4>"+
+                            "  </body>\n" +
+                            "</html>");
+
             //TODO: Post - Agregar fotos y reviews
 
             places.add(localPlace);
@@ -366,7 +406,9 @@ public class Tools {
     }
 
 
-
+    public static String getStringResource(Context context, int id){
+        return (String) context.getResources().getString(id);
+    }
 
 
     public static int dpToPx(Context c, int dp) {

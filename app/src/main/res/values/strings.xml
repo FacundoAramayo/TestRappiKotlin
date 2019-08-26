@@ -51,6 +51,7 @@
     <string name="remove_favorite">remove from favorites</string>
     <string name="no_phone_number">do not have a phone</string>
     <string name="no_website">do not have a website</string>
+    <string name="go_to_website">Go to website</string>
     <string name="fail_dial_number">Cannot dial phone number</string>
     <string name="fail_open_website">Cannot open website</string>
     <string name="unable_create_map">Sorry! unable to create maps</string>
@@ -143,6 +144,10 @@
     <string name="web_client_id">554896515826-iilaie2tmb9td9gv7ejgp4ea9b2hvlg0.apps.googleusercontent.com</string>
     <string name="category">Category</string>
     <string name="refresh">Refresh</string>
+    <string name="price_range">Price range</string>
+    <string name="average_cost_for_two">Average cost for two</string>
+    <string name="currency">Currency</string>
+    <string name="cuisines">Cuisines</string>
 
 
 </resources>
