@@ -188,67 +188,67 @@ public class ActivityMainPlaces extends AppCompatActivity {
             case R.id.nav_delivery:
                 fragment = new FragmentCategory();
                 home = false;
-                bundle.putInt(FragmentCategory.TAG_CATEGORY, cat[10]);
+                bundle.putInt(FragmentCategory.TAG_CATEGORY, cat[0]);
                 actionBar.setTitle(title);
                 break;
             case R.id.nav_dine_out:
                 fragment = new FragmentCategory();
                 home = false;
-                bundle.putInt(FragmentCategory.TAG_CATEGORY, cat[0]);
+                bundle.putInt(FragmentCategory.TAG_CATEGORY, cat[1]);
                 actionBar.setTitle(title);
                 break;
             case R.id.nav_nightlife:
                 fragment = new FragmentCategory();
                 home = false;
-                bundle.putInt(FragmentCategory.TAG_CATEGORY, cat[1]);
+                bundle.putInt(FragmentCategory.TAG_CATEGORY, cat[2]);
                 actionBar.setTitle(title);
                 break;
             case R.id.nav_catching_up:
                 fragment = new FragmentCategory();
                 home = false;
-                bundle.putInt(FragmentCategory.TAG_CATEGORY, cat[2]);
+                bundle.putInt(FragmentCategory.TAG_CATEGORY, cat[3]);
                 actionBar.setTitle(title);
                 break;
             case R.id.nav_takeaway:
                 fragment = new FragmentCategory();
                 home = false;
-                bundle.putInt(FragmentCategory.TAG_CATEGORY, cat[3]);
+                bundle.putInt(FragmentCategory.TAG_CATEGORY, cat[4]);
                 actionBar.setTitle(title);
                 break;
             case R.id.nav_cafes:
                 fragment = new FragmentCategory();
                 home = false;
-                bundle.putInt(FragmentCategory.TAG_CATEGORY, cat[4]);
+                bundle.putInt(FragmentCategory.TAG_CATEGORY, cat[5]);
                 actionBar.setTitle(title);
                 break;
             case R.id.nav_daily_menus:
                 fragment = new FragmentCategory();
                 home = false;
-                bundle.putInt(FragmentCategory.TAG_CATEGORY, cat[5]);
+                bundle.putInt(FragmentCategory.TAG_CATEGORY, cat[6]);
                 actionBar.setTitle(title);
                 break;
             case R.id.nav_breakfast:
                 fragment = new FragmentCategory();
                 home = false;
-                bundle.putInt(FragmentCategory.TAG_CATEGORY, cat[6]);
+                bundle.putInt(FragmentCategory.TAG_CATEGORY, cat[7]);
                 actionBar.setTitle(title);
                 break;
             case R.id.nav_lunch:
                 fragment = new FragmentCategory();
                 home = false;
-                bundle.putInt(FragmentCategory.TAG_CATEGORY, cat[7]);
+                bundle.putInt(FragmentCategory.TAG_CATEGORY, cat[8]);
                 actionBar.setTitle(title);
                 break;
             case R.id.nav_dinner:
                 fragment = new FragmentCategory();
                 home = false;
-                bundle.putInt(FragmentCategory.TAG_CATEGORY, cat[8]);
+                bundle.putInt(FragmentCategory.TAG_CATEGORY, cat[9]);
                 actionBar.setTitle(title);
                 break;
             case R.id.nav_pubs_bars:
                 fragment = new FragmentCategory();
                 home = false;
-                bundle.putInt(FragmentCategory.TAG_CATEGORY, cat[9]);
+                bundle.putInt(FragmentCategory.TAG_CATEGORY, cat[10]);
                 actionBar.setTitle(title);
                 break;
             case R.id.nav_pocket_friendly_delivery:
@@ -260,7 +260,7 @@ public class ActivityMainPlaces extends AppCompatActivity {
             case R.id.nav_club_lounges:
                 fragment = new FragmentCategory();
                 home = false;
-                bundle.putInt(FragmentCategory.TAG_CATEGORY, cat[11]);
+                bundle.putInt(FragmentCategory.TAG_CATEGORY, cat[12]);
                 actionBar.setTitle(title);
                 break;
             default:

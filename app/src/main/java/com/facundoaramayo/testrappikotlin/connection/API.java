@@ -20,8 +20,21 @@ public interface API {
             @Query("lat") double lat,
             @Query("lon") double lon,
             @Query("radius") int radius,
+            @Query("count") int count,
+            @Query("sort") String sort,
+            @Query("order") String order
+    );
+
+    @Headers({CACHE, AGENT, USER_KEY})
+    @GET("api/v2.1/search")
+    Call<CallbackListPlace> getPlacesByCategory(
+            @Query("lat") double lat,
+            @Query("lon") double lon,
+            @Query("radius") int radius,
             @Query("category") int category,
-            @Query("count") int count
+            @Query("count") int count,
+            @Query("sort") String sort,
+            @Query("order") String order
     );
 
 

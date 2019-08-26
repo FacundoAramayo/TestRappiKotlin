@@ -357,19 +357,19 @@ public class Tools {
             String isDeliveringNow;
             String hasTableBooking;
             if (resItem.getHas_online_delivery() == 1){
-                hasOnlineDelivery = "Has online delivery";
+                hasOnlineDelivery = "Available";
             } else {
-                hasOnlineDelivery = "Has not online delivery";
+                hasOnlineDelivery = "Not available";
             }
             if (resItem.is_delivering_now() == 1){
                 isDeliveringNow = "Delivering... call now!";
             } else {
-                isDeliveringNow = "Not yet";
+                isDeliveringNow = "Not available right now";
             }
             if (resItem.getHas_table_booking() == 1){
-                hasTableBooking = "¡Book a table now!";
+                hasTableBooking = "Book a table now!";
             } else {
-                hasTableBooking = "Has not tables for booking";
+                hasTableBooking = "Has not available tables for booking";
             }
 
 

@@ -9,6 +9,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.ActionBar;
@@ -22,6 +23,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
+import com.facundoaramayo.testrappikotlin.connection.RestAdapter;
+import com.facundoaramayo.testrappikotlin.connection.callbacks.CallbackListPlace;
 import com.facundoaramayo.testrappikotlin.data.Constant;
 import com.facundoaramayo.testrappikotlin.data.DatabaseHandler;
 import com.facundoaramayo.testrappikotlin.model.Category;
@@ -35,10 +38,14 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.maps.android.clustering.ClusterManager;
 import com.google.maps.android.clustering.view.DefaultClusterRenderer;
+import retrofit2.Call;
+import retrofit2.Response;
 
 import java.security.Permission;
 import java.util.HashMap;
 import java.util.List;
+
+import static com.facundoaramayo.testrappikotlin.utils.Tools.getLastKnownLocation;
 
 public class ActivityMaps extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -63,6 +70,11 @@ public class ActivityMaps extends AppCompatActivity implements OnMapReadyCallbac
 
     private ImageView icon, marker_bg;
     private View marker_view;
+
+    private boolean onProcess = false;
+    int results_found = -1;
+
+    private Call<CallbackListPlace> callback;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -239,50 +251,60 @@ public class ActivityMaps extends AppCompatActivity implements OnMapReadyCallbac
             if (item.getItemId() != R.id.menu_category) {
                 category_text = item.getTitle().toString();
                 switch (item.getItemId()) {
+                    //TODO: Hacer dinámico
                     case R.id.nav_all:
-                        cat_id = -1;
+                        cat_id = 0;
                         break;
                     case R.id.nav_delivery:
-                        cat_id = cat[10];
-                        break;
-                    case R.id.nav_dine_out:
                         cat_id = cat[0];
                         break;
-                    case R.id.nav_nightlife:
+                    case R.id.nav_dine_out:
                         cat_id = cat[1];
                         break;
-                    case R.id.nav_catching_up:
+                    case R.id.nav_nightlife:
                         cat_id = cat[2];
                         break;
-                    case R.id.nav_takeaway:
+                    case R.id.nav_catching_up:
                         cat_id = cat[3];
                         break;
-                    case R.id.nav_cafes:
+                    case R.id.nav_takeaway:
                         cat_id = cat[4];
                         break;
-                    case R.id.nav_daily_menus:
+                    case R.id.nav_cafes:
                         cat_id = cat[5];
                         break;
-                    case R.id.nav_breakfast:
+                    case R.id.nav_daily_menus:
                         cat_id = cat[6];
                         break;
-                    case R.id.nav_lunch:
+                    case R.id.nav_breakfast:
                         cat_id = cat[7];
                         break;
-                    case R.id.nav_dinner:
+                    case R.id.nav_lunch:
                         cat_id = cat[8];
                         break;
-                    case R.id.nav_pubs_bars:
+                    case R.id.nav_dinner:
                         cat_id = cat[9];
+                        break;
+                    case R.id.nav_pubs_bars:
+                        cat_id = cat[10];
                         break;
                     case R.id.nav_pocket_friendly_delivery:
                         cat_id = cat[11];
                         break;
                     case R.id.nav_club_lounges:
-                        cat_id = cat[11];
+                        cat_id = cat[12];
                         break;
                 }
 
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.d("LOG-", "REQUEST");
+                        onRefresh(1, cat_id);
+                    }
+                }, 500);
+
+                /*
                 cur_category = db.getCategory(cat_id);
 
                 if (isSinglePlace) {
@@ -298,11 +320,74 @@ public class ActivityMaps extends AppCompatActivity implements OnMapReadyCallbac
                 }
                 placeMarkerRenderer = new PlaceMarkerRenderer(this, mMap, mClusterManager);
                 mClusterManager.setRenderer(placeMarkerRenderer);
-
+                */
                 actionBar.setTitle(category_text);
             }
+
         }
         return super.onOptionsItemSelected(item);
+    }
+
+
+    private void onRefresh(final int page_no, int category) {
+        onProcess = true;
+        //showProgress(onProcess);
+        Location loc = getLastKnownLocation(this);
+        if (loc != null){
+            callback = RestAdapter.createAPI().getPlacesByCategory(loc.getLatitude(),loc.getLongitude(),2, category, 20, "real_distance", "asc");
+        } else {
+            callback = RestAdapter.createAPI().getPlacesByCategory(40.28422,-84.1555,2, category,40, "real_distance", "asc");
+        }
+        callback.enqueue(new retrofit2.Callback<CallbackListPlace>() {
+            @Override
+            public void onResponse(Call<CallbackListPlace> call, Response<CallbackListPlace> response) {
+                CallbackListPlace resp = response.body();
+
+                Log.d("LOG-CONVERSION", "START");
+                List<Place> placesToInsert = Tools.convertRestaurantContainerToPlace(resp.getRestaurants());
+
+                if (resp != null) {
+                    results_found = resp.getResults_shown();
+                    if (page_no == 1) db.refreshTablePlace();
+                    db.insertListPlace(placesToInsert);  // save result into database
+                    //sharedPref.setLastPlacePage(page_no + 1);
+                    //delayNextRequest(page_no);
+                    String str_progress = String.format(getString(R.string.load_of), (page_no * Constant.LIMIT_PLACE_REQUEST), results_found);
+                    //text_progress.setText(str_progress);
+                } else {
+                    onFailureRetry(page_no, getString(R.string.refresh_failed));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CallbackListPlace> call, Throwable t) {
+                if (call != null && !call.isCanceled()) {
+                    Log.e("onFailure", t.getMessage());
+                    boolean conn = Tools.checkConnection(getApplicationContext());
+                    if (conn) {
+                        onFailureRetry(page_no, getString(R.string.refresh_failed));
+                    } else {
+                        onFailureRetry(page_no, getString(R.string.no_internet));
+                    }
+                }
+            }
+        });
+
+    }
+
+    private void onFailureRetry(final int page_no, String msg) {
+        onProcess = false;
+        //showProgress(onProcess);
+        //showNoItemView();
+        //startLoadMoreAdapter();
+        //snackbar_retry = Snackbar.make(root_view, msg, Snackbar.LENGTH_INDEFINITE);
+        //snackbar_retry.setAction(R.string.RETRY, new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                actionRefresh(page_no);
+//            }
+//        });
+        //snackbar_retry.show();
     }
 
     private void showAlertDialogGps() {

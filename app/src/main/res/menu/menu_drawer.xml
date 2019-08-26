@@ -38,10 +38,10 @@
                 android:id="@+id/nav_nightlife"
                 android:icon="@drawable/ic_nav_food"
                 android:title="@string/title_nightlife" />
-        <item
-                android:id="@+id/nav_catching-up"
-                android:icon="@drawable/ic_nav_food"
-                android:title="@string/title_catching_up" />
+        <!--<item-->
+                <!--android:id="@+id/nav_catching-up"-->
+                <!--android:icon="@drawable/ic_nav_food"-->
+                <!--android:title="@string/title_catching_up" />-->
         <item
                 android:id="@+id/nav_takeaway"
                 android:icon="@drawable/ic_nav_food"
@@ -50,10 +50,10 @@
                 android:id="@+id/nav_cafes"
                 android:icon="@drawable/ic_nav_food"
                 android:title="@string/title_cafes" />
-        <item
-                android:id="@+id/nav_daily_menus"
-                android:icon="@drawable/ic_nav_food"
-                android:title="@string/title_daily_menus" />
+        <!--<item-->
+                <!--android:id="@+id/nav_daily_menus"-->
+                <!--android:icon="@drawable/ic_nav_food"-->
+                <!--android:title="@string/title_daily_menus" />-->
         <item
                 android:id="@+id/nav_lunch"
                 android:icon="@drawable/ic_nav_food"
