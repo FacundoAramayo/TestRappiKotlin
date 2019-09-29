@@ -99,7 +99,7 @@ public class AdapterPlaceGrid extends RecyclerView.Adapter<RecyclerView.ViewHold
             ViewHolder vItem = (ViewHolder) holder;
             final Place p = items.get(position);
             vItem.title.setText(p.getName());
-            imgloader.displayImage(Constant.getURLimgPlace(p.getImage()), vItem.image, Tools.getGridOption());
+            imgloader.displayImage(Constant.INSTANCE.getURLimgPlace(p.getImage()), vItem.image, Tools.getGridOption());
 
             if (p.getDistance() == -1) {
                 vItem.lyt_distance.setVisibility(View.GONE);
@@ -201,7 +201,7 @@ public class AdapterPlaceGrid extends RecyclerView.Adapter<RecyclerView.ViewHold
                     super.onScrolled(recyclerView, dx, dy);
                     int lastPos = getLastVisibleItem(layoutManager.findLastVisibleItemPositions(null));
                     if (!loading && lastPos == getItemCount() - 1 && onLoadMoreListener != null) {
-                        int current_page = getItemCount() / Constant.LIMIT_LOADMORE;
+                        int current_page = getItemCount() / Constant.INSTANCE.LIMIT_LOADMORE;
                         onLoadMoreListener.onLoadMore(current_page);
                         loading = true;
                     }

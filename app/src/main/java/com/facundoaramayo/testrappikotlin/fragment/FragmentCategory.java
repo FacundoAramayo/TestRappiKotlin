@@ -158,7 +158,7 @@ public class FragmentCategory extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_refresh) {
-            ThisApplication.getInstance().setLocation(null);
+//            ThisApplication.getInstance().setLocation(null);
             sharedPref.setLastPlacePage(1);
             sharedPref.setRefreshPlaces(true);
             text_progress.setText("");
@@ -191,7 +191,7 @@ public class FragmentCategory extends Fragment {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                List<Place> items = db.getPlacesByPage(category_id, Constant.LIMIT_LOADMORE, (next_page * Constant.LIMIT_LOADMORE));
+                List<Place> items = db.getPlacesByPage(category_id, Constant.INSTANCE.LIMIT_LOADMORE, (next_page * Constant.INSTANCE.LIMIT_LOADMORE));
                 adapter.insertData(items);
                 showNoItemView();
             }
@@ -223,7 +223,7 @@ public class FragmentCategory extends Fragment {
                 @Override
                 public void run() {
                     Log.d("LOG-","Get Places: " + category);
-                    List<Place> items = db.getPlacesByPage(category, Constant.LIMIT_LOADMORE, sharedPref.getLastPlacePage());
+                    List<Place> items = db.getPlacesByPage(category, Constant.INSTANCE.LIMIT_LOADMORE, sharedPref.getLastPlacePage());
 
                     Log.d("LOG-","Places: " + items.size());
                     adapter.insertData(items);
@@ -249,9 +249,9 @@ public class FragmentCategory extends Fragment {
         Log.d("LOG-", "BAD RETURN");
         Location loc = getLastKnownLocation(getContext());
         if (loc != null){
-            callback = RestAdapter.createAPI().getPlacesByPage(loc.getLatitude(),loc.getLongitude(),2,20, "real_distance", "asc");
+            callback = RestAdapter.INSTANCE.createAPI().getPlacesByPage(loc.getLatitude(),loc.getLongitude(),2,20, "real_distance", "asc");
         } else {
-            callback = RestAdapter.createAPI().getPlacesByPage(40.28422,-84.1555,2,40, "real_distance", "asc");
+            callback = RestAdapter.INSTANCE.createAPI().getPlacesByPage(40.28422,-84.1555,2,40, "real_distance", "asc");
         }
         callback.enqueue(new retrofit2.Callback<CallbackListPlace>() {
                 @Override
@@ -268,7 +268,7 @@ public class FragmentCategory extends Fragment {
                         adapter.insertData(placesToInsert);
                         sharedPref.setLastPlacePage(page_no + 1);
                         delayNextRequest(page_no);
-                        String str_progress = String.format(getString(R.string.load_of), (page_no * Constant.LIMIT_PLACE_REQUEST), results_found);
+                        String str_progress = String.format(getString(R.string.load_of), (page_no * Constant.INSTANCE.LIMIT_PLACE_REQUEST), results_found);
                         text_progress.setText(str_progress);
                     } else {
                         onFailureRetry(page_no, getString(R.string.refresh_failed));
@@ -330,7 +330,7 @@ public class FragmentCategory extends Fragment {
             onFailureRetry(page_no, getString(R.string.refresh_failed));
             return;
         }
-        if ((page_no * Constant.LIMIT_PLACE_REQUEST) > results_found) { // when all data loaded
+        if ((page_no * Constant.INSTANCE.LIMIT_PLACE_REQUEST) > results_found) { // when all data loaded
             onProcess = false;
             showProgress(onProcess);
             //startLoadMoreAdapter();

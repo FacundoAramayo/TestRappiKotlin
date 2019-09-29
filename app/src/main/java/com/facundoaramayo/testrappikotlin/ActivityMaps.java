@@ -108,7 +108,7 @@ public class ActivityMaps extends AppCompatActivity implements OnMapReadyCallbac
             MarkerOptions markerOptions = new MarkerOptions().title(ext_place.getName()).position(ext_place.getPosition());
             markerOptions.icon(BitmapDescriptorFactory.fromBitmap(Tools.createBitmapFromView(ActivityMaps.this, marker_view)));
             mMap.addMarker(markerOptions);
-            location = CameraUpdateFactory.newLatLngZoom(ext_place.getPosition(), Constant.city_zoom);
+            location = CameraUpdateFactory.newLatLngZoom(ext_place.getPosition(), Constant.INSTANCE.CITY_ZOOM);
             actionBar.setTitle(ext_place.getName());
         } else {
             try {
@@ -117,7 +117,7 @@ public class ActivityMaps extends AppCompatActivity implements OnMapReadyCallbac
                     showAlertDialogGps();
                 } else {
                     Location loc = Tools.getLastKnownLocation(ActivityMaps.this);
-                    location = CameraUpdateFactory.newLatLngZoom(new LatLng(loc.getLatitude(), loc.getLongitude()), Constant.city_zoom);
+                    location = CameraUpdateFactory.newLatLngZoom(new LatLng(loc.getLatitude(), loc.getLongitude()), Constant.INSTANCE.CITY_ZOOM);
                     mMap.animateCamera(location);
                 }
             } catch (Exception e) {
@@ -173,7 +173,7 @@ public class ActivityMaps extends AppCompatActivity implements OnMapReadyCallbac
                             showAlertDialogGps();
                         } else {
                             Location loc = Tools.getLastKnownLocation(ActivityMaps.this);
-                            CameraUpdate myCam = CameraUpdateFactory.newLatLngZoom(new LatLng(loc.getLatitude(), loc.getLongitude()), Constant.city_zoom);
+                            CameraUpdate myCam = CameraUpdateFactory.newLatLngZoom(new LatLng(loc.getLatitude(), loc.getLongitude()), Constant.INSTANCE.CITY_ZOOM);
                             mMap.animateCamera(myCam);
                         }
                     } catch (Exception e) {
@@ -334,9 +334,9 @@ public class ActivityMaps extends AppCompatActivity implements OnMapReadyCallbac
         //showProgress(onProcess);
         Location loc = getLastKnownLocation(this);
         if (loc != null){
-            callback = RestAdapter.createAPI().getPlacesByCategory(loc.getLatitude(),loc.getLongitude(),2, category, 20, "real_distance", "asc");
+            callback = RestAdapter.INSTANCE.createAPI().getPlacesByCategory(loc.getLatitude(),loc.getLongitude(),2, category, 20, "real_distance", "asc");
         } else {
-            callback = RestAdapter.createAPI().getPlacesByCategory(40.28422,-84.1555,2, category,40, "real_distance", "asc");
+            callback = RestAdapter.INSTANCE.createAPI().getPlacesByCategory(40.28422,-84.1555,2, category,40, "real_distance", "asc");
         }
         callback.enqueue(new retrofit2.Callback<CallbackListPlace>() {
             @Override
@@ -352,7 +352,7 @@ public class ActivityMaps extends AppCompatActivity implements OnMapReadyCallbac
                     db.insertListPlace(placesToInsert);  // save result into database
                     //sharedPref.setLastPlacePage(page_no + 1);
                     //delayNextRequest(page_no);
-                    String str_progress = String.format(getString(R.string.load_of), (page_no * Constant.LIMIT_PLACE_REQUEST), results_found);
+                    String str_progress = String.format(getString(R.string.load_of), (page_no * Constant.INSTANCE.LIMIT_PLACE_REQUEST), results_found);
                     //text_progress.setText(str_progress);
                 } else {
                     onFailureRetry(page_no, getString(R.string.refresh_failed));

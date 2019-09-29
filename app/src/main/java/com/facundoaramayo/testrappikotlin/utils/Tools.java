@@ -67,8 +67,8 @@ public class Tools {
 
     public static void initImageLoader(Context context) {
         DisplayImageOptions options = new DisplayImageOptions.Builder()
-                .cacheInMemory(AppConfig.IMAGE_CACHE)
-                .cacheOnDisk(AppConfig.IMAGE_CACHE)
+                .cacheInMemory(AppConfig.INSTANCE.IMAGE_CACHE)
+                .cacheOnDisk(AppConfig.INSTANCE.IMAGE_CACHE)
                 .imageScaleType(ImageScaleType.EXACTLY)
                 .build();
 
@@ -83,8 +83,8 @@ public class Tools {
 
     public static DisplayImageOptions getGridOption() {
         DisplayImageOptions options = new DisplayImageOptions.Builder()
-                .cacheInMemory(AppConfig.IMAGE_CACHE)
-                .cacheOnDisk(AppConfig.IMAGE_CACHE)
+                .cacheInMemory(AppConfig.INSTANCE.IMAGE_CACHE)
+                .cacheOnDisk(AppConfig.INSTANCE.IMAGE_CACHE)
                 .build();
 
         return options;
@@ -205,7 +205,7 @@ public class Tools {
 
         float distInMeters = start.distanceTo(end);
         float resultDist = 0;
-        if (AppConfig.DISTANCE_METRIC_CODE.equals("KILOMETER")) {
+        if (AppConfig.INSTANCE.DISTANCE_METRIC_CODE.equals("KILOMETER")) {
             resultDist = distInMeters / 1000;
         } else {
             resultDist = (float) (distInMeters * 0.000621371192);
@@ -214,7 +214,7 @@ public class Tools {
     }
 
     public static List<Place> filterItemsWithDistance(Activity act, List<Place> items) {
-        if (AppConfig.SORT_BY_DISTANCE) { // checking for distance sorting
+        if (AppConfig.INSTANCE.SORT_BY_DISTANCE) { // checking for distance sorting
             LatLng curLoc = Tools.getCurLocation(act);
             if (curLoc != null) {
                 return Tools.getSortedDistanceList(items, curLoc);
@@ -224,7 +224,7 @@ public class Tools {
     }
 
     public static List<Place> itemsWithDistance(Context ctx, List<Place> items) {
-        if (AppConfig.SORT_BY_DISTANCE) { // checking for distance sorting
+        if (AppConfig.INSTANCE.SORT_BY_DISTANCE) { // checking for distance sorting
             LatLng curLoc = Tools.getCurLocation(ctx);
             if (curLoc != null) {
                 return Tools.getDistanceList(items, curLoc);
@@ -323,7 +323,7 @@ public class Tools {
     public static String getFormatedDistance(float distance) {
         DecimalFormat df = new DecimalFormat();
         df.setMaximumFractionDigits(1);
-        return df.format(distance) + " " + AppConfig.DISTANCE_METRIC_STR;
+        return df.format(distance) + " " + AppConfig.INSTANCE.DISTANCE_METRIC_STR;
     }
 
     public static List<Place> convertRestaurantContainerToPlace(List<RestaurantContainer> listContainer){

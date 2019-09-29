@@ -87,7 +87,7 @@ public class ActivityPlaceDetail extends AppCompatActivity {
         fab = findViewById(R.id.fab);
         lyt_progress = findViewById(R.id.lyt_progress);
         lyt_distance = findViewById(R.id.lyt_distance);
-        imgloader.displayImage(Constant.getURLimgPlace(place.getImage()), (ImageView) findViewById(R.id.image));
+        imgloader.displayImage(Constant.INSTANCE.getURLimgPlace(place.getImage()), (ImageView) findViewById(R.id.image));
         distance = place.getDistance();
 
         fabToggle();
@@ -185,7 +185,7 @@ public class ActivityPlaceDetail extends AppCompatActivity {
         new_images.add(new Images(place.getPlace_id(), place.getImage()));
         new_images.addAll(images);
         for (Images img : new_images) {
-            new_images_str.add(Constant.getURLimgPlace(img.getImageUrl()));
+            new_images_str.add(Constant.INSTANCE.getURLimgPlace(img.getImageUrl()));
         }
 
         RecyclerView galleryRecycler = findViewById(R.id.galleryRecycler);
